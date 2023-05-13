@@ -1,15 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Library</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/x-icon" href="#">
-    <script src="script.js" defer></script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Library</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/x-icon" href="#">
+  <script src="script.js" defer></script>
 </head>
 <body>
-    
+
+  <h1 class="title">My Library</h1>
+
+  <div class="container">
+    <fieldset>
+      <form class="add-book-form" action="#" method="post" formnovalidate>
+        <label for="title">Title:</label>
+        <input type="text" name="title" id="title" aria-required="true" required>
+
+        <label for="author">Author:</label>
+        <input type="text" name="author" id="author" aria-required="true" required>
+
+        <label for="pages">No. of Pages:</label>
+        <input type="number" name="pages" id="pages" aria-required="true" required min="1" max="2000">
+
+        <label>Read Status:</label>
+        <label for="read">Read</label>
+        <input type="radio" name="status" id="read" value="read" required>
+        <label for="unread">Not yet read</label>
+        <input type="radio" name="status" id="unread" value="unread">
+
+        <button type="submit">Add Book</button>
+
+      </form>
+    </fieldset>
+  </div>
+
 </body>
 </html>
