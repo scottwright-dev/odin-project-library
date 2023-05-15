@@ -14,14 +14,38 @@ function Book(title, author, pages, read) {
   };
 }
 
-// Manually add books to the library
-const book1 = new Book('Book 1', 'Author 1', 100, 'read');
-const book2 = new Book('Book 2', 'Author 2', 200, 'not yet read');
-const book3 = new Book('Book 3', 'Author 3', 300, 'read');
+// -- DISPLAY LIBRARY -- //
 
-myLibrary.push(book1);
-myLibrary.push(book2);
-myLibrary.push(book3);
+const libraryContainer = document.createElement('div');
+libraryContainer.id = 'library-container';
+document.body.append(libraryContainer);
+
+function displayLibrary() {
+  libraryContainer.innerHTML = '';
+
+  myLibrary.forEach((book) => {
+    const bookCard = document.createElement('div');
+
+    const title = document.createElement('h2');
+    title.textContent = `Title: ${book.title}`;
+
+    const author = document.createElement('p');
+    author.textContent = `Author: ${book.author}`;
+
+    const pages = document.createElement('p');
+    pages.textContent = `Pages: ${book.pages}`;
+
+    const readStatus = document.createElement('p');
+    readStatus.textContent = `Read status: ${book.read}`;
+
+    bookCard.append(title);
+    bookCard.append(author);
+    bookCard.append(pages);
+    bookCard.append(readStatus);
+
+    libraryContainer.append(bookCard);
+  });
+}
 
 // -- ADD BOOK FUNCTION -- //
 
@@ -42,39 +66,6 @@ function addBookToLibrary() {
     form.reset();
 
     displayLibrary();
-  });
-}
-
-// -- DISPLAY LIBRARY -- //
-
-const libraryContainer = document.createElement('div');
-libraryContainer.id = 'library-container';
-document.body.appendChild(libraryContainer);
-
-function displayLibrary() {
-  libraryContainer.innerHTML = '';
-
-  myLibrary.forEach((book) => {
-    const bookCard = document.createElement('div');
-
-    const title = document.createElement('h2');
-    title.textContent = `Title: ${book.title}`;
-
-    const author = document.createElement('p');
-    author.textContent = `Author: ${book.author}`;
-
-    const pages = document.createElement('p');
-    pages.textContent = `Pages: ${book.pages}`;
-
-    const readStatus = document.createElement('p');
-    readStatus.textContent = `Read status: ${book.read}`;
-
-    bookCard.appendChild(title);
-    bookCard.appendChild(author);
-    bookCard.appendChild(pages);
-    bookCard.appendChild(readStatus);
-
-    libraryContainer.appendChild(bookCard);
   });
 }
 
