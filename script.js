@@ -38,6 +38,10 @@ function addBookToLibrary() {
 
     const addNewBook = new Book(title, author, pages, read);
     myLibrary.push(addNewBook);
+
+    form.reset();
+
+    displayLibrary();
   });
 }
 
@@ -47,25 +51,33 @@ const libraryContainer = document.createElement('div');
 libraryContainer.id = 'library-container';
 document.body.appendChild(libraryContainer);
 
-myLibrary.forEach((book) => {
-  const bookCard = document.createElement('div');
+function displayLibrary() {
+  libraryContainer.innerHTML = '';
 
-  const title = document.createElement('h2');
-  title.textContent = `Title: ${book.title}`;
+  myLibrary.forEach((book) => {
+    const bookCard = document.createElement('div');
 
-  const author = document.createElement('p');
-  author.textContent = `Author: ${book.author}`;
+    const title = document.createElement('h2');
+    title.textContent = `Title: ${book.title}`;
 
-  const pages = document.createElement('p');
-  pages.textContent = `Pages: ${book.pages}`;
+    const author = document.createElement('p');
+    author.textContent = `Author: ${book.author}`;
 
-  const readStatus = document.createElement('p');
-  readStatus.textContent = `Read status: ${book.read}`;
+    const pages = document.createElement('p');
+    pages.textContent = `Pages: ${book.pages}`;
 
-  bookCard.appendChild(title);
-  bookCard.appendChild(author);
-  bookCard.appendChild(pages);
-  bookCard.appendChild(readStatus);
+    const readStatus = document.createElement('p');
+    readStatus.textContent = `Read status: ${book.read}`;
 
-  libraryContainer.appendChild(bookCard);
-});
+    bookCard.appendChild(title);
+    bookCard.appendChild(author);
+    bookCard.appendChild(pages);
+    bookCard.appendChild(readStatus);
+
+    libraryContainer.appendChild(bookCard);
+  });
+}
+
+displayLibrary();
+
+addBookToLibrary();
