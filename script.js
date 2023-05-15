@@ -15,9 +15,9 @@ function Book(title, author, pages, read) {
 }
 
 // Manually add books to the library
-const book1 = new Book('Book 1', 'Author 1', 100, true);
-const book2 = new Book('Book 2', 'Author 2', 200, false);
-const book3 = new Book('Book 3', 'Author 3', 300, false);
+const book1 = new Book('Book 1', 'Author 1', 100, 'read');
+const book2 = new Book('Book 2', 'Author 2', 200, 'not yet read');
+const book3 = new Book('Book 3', 'Author 3', 300, 'read');
 
 myLibrary.push(book1);
 myLibrary.push(book2);
@@ -41,6 +41,31 @@ function addBookToLibrary() {
   });
 }
 
-console.log(myLibrary);
+// -- DISPLAY LIBRARY -- //
 
-addBookToLibrary();
+const libraryContainer = document.createElement('div');
+libraryContainer.id = 'library-container';
+document.body.appendChild(libraryContainer);
+
+myLibrary.forEach((book) => {
+  const bookCard = document.createElement('div');
+
+  const title = document.createElement('h2');
+  title.textContent = `Title: ${book.title}`;
+
+  const author = document.createElement('p');
+  author.textContent = `Author: ${book.author}`;
+
+  const pages = document.createElement('p');
+  pages.textContent = `Pages: ${book.pages}`;
+
+  const readStatus = document.createElement('p');
+  readStatus.textContent = `Read status: ${book.read}`;
+
+  bookCard.appendChild(title);
+  bookCard.appendChild(author);
+  bookCard.appendChild(pages);
+  bookCard.appendChild(readStatus);
+
+  libraryContainer.appendChild(bookCard);
+});
