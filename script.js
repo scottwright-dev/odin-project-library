@@ -14,6 +14,15 @@ function Book(title, author, pages, read) {
   };
 }
 
+// Manually add books to the library
+const book1 = new Book('Book 1', 'Author 1', 100, true);
+const book2 = new Book('Book 2', 'Author 2', 200, false);
+const book3 = new Book('Book 3', 'Author 3', 300, false);
+
+myLibrary.push(book1);
+myLibrary.push(book2);
+myLibrary.push(book3);
+
 // -- ADD BOOK FUNCTION -- //
 
 function addBookToLibrary() {
