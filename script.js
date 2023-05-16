@@ -7,11 +7,7 @@ function Book(title, author, pages, read) {
   this.author = author;
   this.pages = pages;
   this.read = read;
-
-  this.info = function () {
-    const readStatus = this.read ? 'read' : 'not read yet';
-    return `${this.title} by ${this.author}, ${this.pages} pages, ${readStatus}`;
-  };
+  this.info = () => `${this.title} by ${this.author}, ${this.pages} pages, ${this.read}`;
 }
 
 // -- DISPLAY LIBRARY -- //
@@ -36,7 +32,7 @@ function displayLibrary() {
     pages.textContent = `Pages: ${book.pages}`;
 
     const readStatus = document.createElement('p');
-    readStatus.textContent = `Read status: ${book.read}`;
+    readStatus.textContent = `Read status: ${book.read ? 'read' : 'not yet read'}`;
 
     bookCard.append(title);
     bookCard.append(author);
@@ -58,17 +54,18 @@ function addBookToLibrary() {
     const title = document.getElementById('title').value;
     const author = document.getElementById('author').value;
     const pages = document.getElementById('pages').value;
-    const read = document.getElementById('read').value;
+    const read = document.getElementById('read').checked;
 
     const addNewBook = new Book(title, author, pages, read);
     myLibrary.push(addNewBook);
 
     form.reset();
 
+    // display library immediately after adding book
     displayLibrary();
   });
 }
 
-displayLibrary();
+// displayLibrary();
 
 addBookToLibrary();
