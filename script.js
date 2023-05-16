@@ -19,7 +19,7 @@ document.body.append(libraryContainer);
 function displayLibrary() {
   libraryContainer.innerHTML = '';
 
-  myLibrary.forEach((book) => {
+  myLibrary.forEach((book, index) => {
     const bookCard = document.createElement('div');
 
     const title = document.createElement('h2');
@@ -40,6 +40,8 @@ function displayLibrary() {
     bookCard.append(readStatus);
 
     libraryContainer.append(bookCard);
+
+    addRemoveButton(bookCard, index);
   });
 }
 
@@ -66,6 +68,27 @@ function addBookToLibrary() {
   });
 }
 
-// displayLibrary();
+// -- REMOVE BOOK FROM LIBRARY -- //
+
+function removeBook(index) {
+  myLibrary.splice(index, 1);
+  displayLibrary();
+}
+
+// -- REMOVE BUTTON -- //
+
+function addRemoveButton(bookCard, index) {
+  const removeBtn = document.createElement('button');
+  removeBtn.classList.add('remove-button');
+  removeBtn.textContent = 'Remove';
+  removeBtn.setAttribute('data-index', index);
+
+  removeBtn.addEventListener('click', (event) => {
+    const clickedIndex = event.target.dataset.index;
+    removeBook(clickedIndex);
+  });
+
+  bookCard.append(removeBtn);
+}
 
 addBookToLibrary();
