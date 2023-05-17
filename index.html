@@ -1,17 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Library</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" type="image/x-icon" href="#">
+  <title>Book Nook</title>
+  <link rel="stylesheet" href="node_modules/@picocss/pico/css/pico.css">
+  <link rel="icon" type="image/svg+xml" href="/img/book-outline.svg">
   <script src="script.js" defer></script>
 </head>
 <body>
 
-  <h1 class="title">My Library</h1>
+  <div class="container">
+    <h1 class="header__title">The Book Nook</h1>
+    <p class="header__text">Welcome to The Book Nook App!</p>
+   <p>Simply fill in the info and click the button to add books to your library.</p> 
+  </div>
 
   <div class="container">
     <fieldset>
@@ -28,7 +32,7 @@
         <label for="read">Read yet?</label>
         <input type="checkbox" name="read" id="read" value="read">
 
-        <button type="submit">Add Book</button>
+        <button type="submit" class="add-btn">Add Book</button>
 
       </form>
     </fieldset>
