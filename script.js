@@ -21,6 +21,7 @@ function displayLibrary() {
 
   myLibrary.forEach((book, index) => {
     const bookCard = document.createElement('div');
+    bookCard.classList.add('book-card');
 
     const title = document.createElement('h2');
     title.textContent = `Title: ${book.title}`;
