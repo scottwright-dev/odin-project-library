@@ -12,39 +12,39 @@ function Book(title, author, pages, read) {
 
 // -- DISPLAY LIBRARY -- //
 
-const libraryContainer = document.createElement('div');
-libraryContainer.id = 'library-container';
-document.body.append(libraryContainer);
+const libraryTableBody = document.querySelector('.library-table tbody');
 
 function displayLibrary() {
-  libraryContainer.innerHTML = '';
+  libraryTableBody.innerHTML = '';
 
   myLibrary.forEach((book, index) => {
-    const bookCard = document.createElement('div');
-    bookCard.classList.add('book-card');
+    const row = document.createElement('tr');
 
-    const title = document.createElement('h2');
-    title.textContent = `Title: ${book.title}`;
+    const titleCell = document.createElement('td');
+    titleCell.textContent = book.title;
 
-    const author = document.createElement('p');
-    author.textContent = `Author: ${book.author}`;
+    const authorCell = document.createElement('td');
+    authorCell.textContent = book.author;
 
-    const pages = document.createElement('p');
-    pages.textContent = `Pages: ${book.pages}`;
+    const pagesCell = document.createElement('td');
+    pagesCell.textContent = book.pages;
 
-    const readStatus = document.createElement('p');
-    readStatus.textContent = `Read status: ${book.read ? 'read' : 'not yet read'}`;
+    const readCell = document.createElement('td');
+    readCell.textContent = book.read ? 'Read' : 'Not yet read';
 
-    bookCard.append(title);
-    bookCard.append(author);
-    bookCard.append(pages);
-    bookCard.append(readStatus);
+    const removeCell = document.createElement('td');
+    addRemoveButton(removeCell, index);
 
-    libraryContainer.append(bookCard);
+    row.appendChild(titleCell);
+    row.appendChild(authorCell);
+    row.appendChild(pagesCell);
+    row.appendChild(readCell);
+    row.appendChild(removeCell);
 
-    addRemoveButton(bookCard, index);
+    libraryTableBody.appendChild(row);
   });
 }
+
 
 // -- ADD BOOK FUNCTION -- //
 
@@ -78,18 +78,13 @@ function removeBook(index) {
 
 // -- REMOVE BUTTON -- //
 
-function addRemoveButton(bookCard, index) {
+function addRemoveButton(cell, index) {
   const removeBtn = document.createElement('button');
-  removeBtn.classList.add('remove-button');
   removeBtn.textContent = 'Remove';
-  removeBtn.setAttribute('data-index', index);
-
-  removeBtn.addEventListener('click', (event) => {
-    const clickedIndex = event.target.dataset.index;
-    removeBook(clickedIndex);
-  });
-
-  bookCard.append(removeBtn);
+  removeBtn.classList.add('remove-btn');
+  removeBtn.addEventListener('click', () => removeBook(index));
+  cell.appendChild(removeBtn);
 }
+
 
 addBookToLibrary();
