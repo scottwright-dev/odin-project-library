@@ -215,7 +215,7 @@ table {
 
   /* FOOTER */
 
-  .footer {
+  /* .footer {
     position: relative;
     bottom: 0;
     left: 0;
@@ -247,4 +247,4 @@ table {
     100% {
       transform: perspective(400px) rotateY(1turn);
     }
-  }
+  } */
