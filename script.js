@@ -45,7 +45,6 @@ function displayLibrary() {
   });
 }
 
-
 // -- ADD BOOK FUNCTION -- //
 
 function addBookToLibrary() {
@@ -79,12 +78,22 @@ function removeBook(index) {
 // -- REMOVE BUTTON -- //
 
 function addRemoveButton(cell, index) {
-  const removeBtn = document.createElement('button');
-  removeBtn.textContent = 'Remove';
+  const removeBtn = document.createElement('div');
+  removeBtn.textContent = '';
   removeBtn.classList.add('remove-btn');
   removeBtn.addEventListener('click', () => removeBook(index));
   cell.appendChild(removeBtn);
 }
 
-
 addBookToLibrary();
+
+// Add dummy books
+const book1 = new Book('The Creative Act', 'Rick Rubin', 432, true);
+const book2 = new Book('Don\'t Make Me Think', 'Steve Krug', 200, true);
+const book3 = new Book('Kitchen Confidential', 'Anthony Bourdain', 362, true);
+
+myLibrary.push(book1, book2, book3);
+
+// Display the library
+displayLibrary();
+
