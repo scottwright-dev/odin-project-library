@@ -2,12 +2,31 @@ const myLibrary = [];
 
 // -- BOOK CONSTRUCTOR -- //
 
-function Book(title, author, pages, read) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
-  this.info = () => `${this.title} by ${this.author}, ${this.pages} pages, ${this.read}`;
+// function Book(title, author, pages, read) {
+//   this.title = title;
+//   this.author = author;
+//   this.pages = pages;
+//   this.read = read;
+//   this.info = () => `${this.title} by ${this.author}, ${this.pages} pages, ${this.read}`;
+// }
+
+// -- BOOK CLASS -- //
+
+class Book {
+  // Class body
+
+  constructor(title, author, pages, read) {
+    // Constructor body
+    this.title = title; // instance property
+    this.author = author; // instance property
+    this.pages = pages; // instance property
+    this.read = read; // instance property
+  }
+  // Instance method
+
+  info() {
+    return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read}`;
+  }
 }
 
 // -- DISPLAY LIBRARY -- //
@@ -33,6 +52,7 @@ function displayLibrary() {
     readCell.textContent = book.read ? 'Read' : 'Not yet read';
 
     const removeCell = document.createElement('td');
+    // eslint-disable-next-line no-use-before-define
     addRemoveButton(removeCell, index);
 
     row.appendChild(titleCell);
@@ -96,4 +116,3 @@ myLibrary.push(book1, book2, book3);
 
 // Display the library
 displayLibrary();
-
